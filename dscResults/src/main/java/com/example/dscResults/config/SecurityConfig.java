@@ -20,7 +20,7 @@ public class SecurityConfig { // Or whatever your security config class is named
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .cors(cors -> cors.configurationSource(corsConfigurationSource())) // <--- ADD THIS LINE
-                .csrf().disable() // Typically disable CSRF for stateless APIs
+                .csrf(csrf -> csrf.disable()) // This is the correct syntax for Spring Boot 3.x+ // Typically disable CSRF for stateless APIs
                 .authorizeHttpRequests(authorize -> authorize
                         .anyRequest().permitAll() // Allow all requests for now, adjust as needed
                 );
